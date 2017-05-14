@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
 
 
 public class SunsetFragment extends Fragment {
@@ -39,11 +40,12 @@ public class SunsetFragment extends Fragment {
 
     private void startAnimation() {
         float sunYStart = mSunView.getTop();
-        float sunYEnd = mSunView.getHeight();
+        float sunYEnd = mSkyView.getHeight();
 
         ObjectAnimator heightAnimator = ObjectAnimator
                 .ofFloat(mSunView, "y", sunYStart, sunYEnd)
                 .setDuration(3000);
+        heightAnimator.setInterpolator(new AccelerateInterpolator());
 
         heightAnimator.start();
     }
